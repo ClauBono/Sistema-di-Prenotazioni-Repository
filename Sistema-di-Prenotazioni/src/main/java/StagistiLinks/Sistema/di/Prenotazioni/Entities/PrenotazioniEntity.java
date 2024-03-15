@@ -2,7 +2,6 @@ package StagistiLinks.Sistema.di.Prenotazioni.Entities;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
-import org.springframework.format.annotation.DateTimeFormat;
 import java.time.LocalDate;
 
 

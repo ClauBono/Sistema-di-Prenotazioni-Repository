@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="it">
+<head>
+
+    <meta charset="UTF-8"/>
+
+    <title>Lista Task</title>
+
+    <!-- Collegamenti ai fogli di stile esterni -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+
+    <!-- Collegamento al css personale -->
+    <link th:href="@{/static/css/style.css}" rel="stylesheet"/>
+
+    <!-- Collegamento all'insieme icone Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
+
+    <!-- Script di jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    <!-- Collegamenti ai fogli di stile DataTables -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css" />
+
+    <!-- Script DataTables per inizializzare la tabella con dati dinamici e scrolling -->
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+
+    <!-- Script del tuo js -->
+    <script th:src="@{/static/js/ListaTaskScript.js}"></script>
+
+
+    <link rel="icon" href="data:,"/>
+
+</head>
+<body>
+
+<!-- Header della pagina con titolo dinamico -->
+<header id="header">
+    <h2 th:text="${titoloPagina}"></h2>
+</header>
+
+<!-- Barra di navigazione -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" th:href="@{/home}">Home</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+<!-- Sezione principale con tabella Bootstrap -->
+<section id="main-section">
+
+    <div id="bottone-nota">
+        <a id="button-newConfig" class="btn btn-dark" th:href="@{/aggiungiTaskList}"><i class="fas fa-cog"></i> Inserisci Nuova Configurazione</a>
+    </div>
+
+    <div class="lista-task">
+
+        <table id="listaTask" class="table table-striped table-bordered">
+            <thead>
+            <tr>
+                <!-- Nomi delle colonne della tabella -->
+                <th data-order="asc">ID</th>
+                <th data-order="asc">Nome</th>
+                <th data-order="asc">Descrizione</th>
+                <th data-order="asc">Data di scadenza</th>
+                <th data-order="asc">Azioni</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Qui verranno visualizzati i dati della tabella -->
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer id="footer" class="bg-dark text-light text-center py-3">
+    <p>© 2024 - Tutti i diritti riservati</p>
+</footer>
+</body>
+</html>

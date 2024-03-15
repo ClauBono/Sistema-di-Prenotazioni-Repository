@@ -1,0 +1,66 @@
+/* Stile per l'header */
+#header {
+    background-color: gray; /* Colore di sfondo */
+    color: #fff; /* Colore del testo */
+    padding: 20px; /* Spaziatura interna */
+    text-align: center; /* Allineamento del testo al centro */
+}
+
+/* Stile per la barra di navigazione */
+.navbar {
+    background-color: #343a40;
+    padding: 10px;
+}
+
+.navbar-nav .nav-item .nav-link {
+    color: #fff; /* Colore del testo */
+    margin: 0 10px; /* Margine tra i link */
+}
+
+.navbar-nav .nav-item .nav-link:hover {
+    color: #17a2b8; /* Cambia colore al passaggio del mouse */
+}
+
+/* Stile per la sezione principale */
+#main-section {
+    padding: 20px; /* Spaziatura interna */
+    text-align: center; /* Allineamento del testo al centro */
+    margin-bottom: 100px;
+}
+
+/* Stile per la tabella */
+#lista-task {
+    margin-top: 20px; /* Margine superiore */
+    margin-bottom: 40px;
+}
+
+#listaTask_wrapper {
+    width: 70%; /* Larghezza della tabella */
+    height: 70vh;
+    margin: 0 auto; /* Centro la tabella */
+}
+
+#listaTask_length, #listaTask_filter {
+    margin-bottom: 10px; /* Spazio tra i filtri e le impostazioni di visualizzazione */
+}
+
+#listaTask_info, #listaTask_paginate {
+    margin-top: 10px; /* Spazio tra le informazioni della tabella e la paginazione */
+}
+
+#listaTask_filter input[type="search"] {
+    width: 100%; /* Larghezza del campo di ricerca */
+}
+
+/* Stile per il footer (se necessario) */
+#footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 5vh;
+    background-color: #343a40; /* Colore di sfondo scuro */
+    color: white; /* Colore del testo chiaro */
+    padding: 10px 0; /* Spaziatura interna al footer */
+}
+
+

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="it">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Inserisci nuova Task</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+
+  <link th:href="@{/static/css/style.css}" rel="stylesheet"/>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
+
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css"/>
+
+  <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+
+  <script th:src="@{/static/js/AggiungiModificaTaskScript.js}"></script>
+
+  <link rel="icon" href="data:,"/>
+</head>
+<body>
+
+<header id="header">
+  <h2>Inserisci nuova Task</h2>
+</header>
+
+<!-- Barra di navigazione -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+  <div class="collapse navbar-collapse" id="navbarNav">
+
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" th:href="@{/home}">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/visualizzaListaTask}">Visualizza lista delle Task</a>
+      </li>
+    </ul>
+
+  </div>
+</nav>
+
+<section id="main-section" class="container mt-4">
+  <div id="inserisci-riga" class="card">
+    <div class="card-body">
+
+      <form th:action="@{${mode eq 'INSERIMENTO' ? '/api/inserisciRiga' : '/api/modificaRiga/' + id}}" id="form">
+
+        <h2 th:text="${mode eq 'INSERIMENTO' ? titoloInserimento : titoloModifica}"></h2>
+
+        <div class="form-row mb-3">
+          <div class="form-group col mt-4">
+            <label for="nome">Nome:</label>
+            <input type="text" class="form-control" id="nome" name="nome" th:value="${mode eq 'MODIFICA' ? taskList.nome : ''}"/>
+          </div>
+
+          <div class="form-group col mt-4">
+            <label for="descrizione">Descrizione:</label>
+            <input type="text" class="form-control" id="descrizione" name="descrizione" th:value="${mode eq 'MODIFICA' ? taskList.descrizione : ''}"/>
+          </div>
+
+          <div class="form-group col mt-4">
+            <label for="dataScadenza">Data di scadenza:</label>
+            <input type="date" class="form-control" id="dataScadenza" name="dataScadenza " th:value="${mode eq 'MODIFICA' ? taskList.dataScadenza : ''}"/>
+          </div>
+        </div>
+
+        <!-- Button -->
+        <div class="form-row">
+          <div class="form-group col">
+            <button type="submit" id="btnInserisci" class="btn btn-success mr-2" th:if="${mode eq 'INSERIMENTO'}">Inserisci</button>
+            <button type="submit" id="btnModifica" class="btn btn-success mr-2" th:if="${mode eq 'MODIFICA'}">Salva</button>
+            <a th:href="@{/visualizzaListaTask}" class="btn btn-secondary">Annulla</a>
+          </div>
+        </div>
+      </form>
+
+      <div id="inserimentoMessage" class="alert alert-success" style="display: none;">
+        Inserimento avvenuto con successo!
+      </div>
+
+      <div id="modificaMessage" class="alert alert-success" style="display: none;">
+        Modifica salvata con successo!
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- Footer -->
+<footer id="footer" class="bg-dark text-light text-center py-3">
+  <p>© 2024 - Tutti i diritti riservati</p>
+</footer>
+</body>
+</html>

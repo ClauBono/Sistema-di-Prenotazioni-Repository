@@ -1,0 +1,29 @@
+Progetto 1: Gestione di una lista di attività
+Requisiti:
+Backend - Spring Boot con Thymeleaf:
+Creare un'applicazione Spring Boot che gestisce una lista di attività (to-do list).
+Utilizzare un modello dati per rappresentare un'attività con almeno i seguenti attributi: ID, nome, descrizione, data di scadenza.
+Implementare operazioni CRUD (Create, Read, Update, Delete) per gestire le attività attraverso un'interfaccia utente Thymeleaf.
+Frontend - Thymeleaf:
+Creare un frontend Thymeleaf per interagire con il backend.
+Mostrare la lista delle attività con informazioni come nome, descrizione e data di scadenza.
+Consentire agli utenti di aggiungere nuove attività, modificarle e eliminarle direttamente dalla pagina web.
+Progetto 2: Sistema di Prenotazioni
+
+
+
+
+MIOOOO
+
+
+
+Progetto 2: Sistema di Prenotazioni
+Requisiti:
+Backend - Spring Boot con Thymeleaf:
+Creare un'applicazione Spring Boot per gestire un sistema di prenotazioni.
+Definire un modello dati per rappresentare le prenotazioni con attributi come ID prenotazione, nome cliente, data di prenotazione, tipo di servizio, etc.
+Implementare operazioni CRUD per gestire le prenotazioni attraverso un'interfaccia utente Thymeleaf.
+Frontend - Thymeleaf:
+Creare un frontend Thymeleaf per interagire con il backend del sistema di prenotazioni.
+Consentire agli utenti di visualizzare la lista delle prenotazioni con informazioni dettagliate.
+Implementare un meccanismo di prenotazione che consente agli utenti di effettuare nuove prenotazioni, modificare o cancellare quelle esistenti.

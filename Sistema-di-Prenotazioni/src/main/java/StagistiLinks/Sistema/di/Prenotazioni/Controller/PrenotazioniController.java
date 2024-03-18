@@ -1,23 +1,34 @@
 package StagistiLinks.Sistema.di.Prenotazioni.Controller;
+import StagistiLinks.Sistema.di.Prenotazioni.DTO.PrenotazioniDTO;
 import StagistiLinks.Sistema.di.Prenotazioni.Entities.PrenotazioniEntity;
+import StagistiLinks.Sistema.di.Prenotazioni.Services.AllConverterToDtoAndEntityService;
 import StagistiLinks.Sistema.di.Prenotazioni.Services.PrenotazioniService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/Prenotazioni")
 public class PrenotazioniController {
 
     private final PrenotazioniService prenotazioniService;
+    private final AllConverterToDtoAndEntityService allConverterToDtoAndEntityService;
 
-    public PrenotazioniController(PrenotazioniService prenotazioniService) {
+    public PrenotazioniController(PrenotazioniService prenotazioniService, AllConverterToDtoAndEntityService allConverterToDtoAndEntityService) {
         this.prenotazioniService = prenotazioniService;
+        this.allConverterToDtoAndEntityService = allConverterToDtoAndEntityService;
     }
 
+
     @GetMapping("/Visualizza tutte le Prenotazioni")
-    public List<PrenotazioniEntity> ottieniTuttePrenotazioni(){
-       return prenotazioniService.ottieniTuttePrenotazioni();
+    public List<PrenotazioniDTO> ottieniTuttePrenotazioni(){
+        List<PrenotazioniEntity> tuttePrenotazioni = prenotazioniService.ottieniTuttePrenotazioni();
+        List<PrenotazioniDTO> tuttePrenotazioniDTO;
+        tuttePrenotazioniDTO = tuttePrenotazioni.stream()
+                .map(allConverterToDtoAndEntityService::convertPrenotazioneToDTO)
+                .collect(Collectors.toList());
+        return tuttePrenotazioniDTO;
     }
 
 
@@ -26,7 +37,9 @@ public class PrenotazioniController {
 
         if (prenotazioniService.aggiungiPrenotazione(prenotazioniEntity)){
 
-            return ResponseEntity.ok("Prenotazione salvata con successo");
+            PrenotazioniDTO prenotazioneAggiunta = allConverterToDtoAndEntityService.convertPrenotazioneToDTO(prenotazioniEntity);
+
+            return ResponseEntity.ok("Prenotazione salvata con successo " + prenotazioneAggiunta );
         }
         return ResponseEntity.badRequest().body("La prenotazione non può essere inserita perché alcuni campi sono nulli o perché completamente vuota");
     }
@@ -42,11 +55,13 @@ public class PrenotazioniController {
     }
 
     @PatchMapping("/Modifica una Prenotazione/{id}")
-    public ResponseEntity<String> modificaPrenotazione(@PathVariable Long id, @RequestBody PrenotazioniEntity prenotazioneModificata){
+    public ResponseEntity<String> modificaPrenotazione(@PathVariable Long id, @RequestBody PrenotazioniEntity prenotazioneEntity){
 
-        if (prenotazioniService.modificaPrenotazione(id, prenotazioneModificata)){
+        if (prenotazioniService.modificaPrenotazione(id, prenotazioneEntity)){
 
-            return ResponseEntity.ok("Modifica della prenotazione con id: " + id + " riuscita.");
+            PrenotazioniDTO prenotazioneModificata = allConverterToDtoAndEntityService.convertPrenotazioneToDTO(prenotazioneEntity);
+
+            return ResponseEntity.ok("Modifica della prenotazione riuscita: " + prenotazioneModificata);
         }
         return ResponseEntity.badRequest().body("Modifica fallita, la prenotazione con l'id: " + id + " non esiste.");
     }

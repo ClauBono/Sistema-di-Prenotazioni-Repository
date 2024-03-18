@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/Sistema-di-Prenotazioni/Sistema-di-Prenotazioni.iml" filepath="$PROJECT_DIR$/Sistema-di-Prenotazioni/Sistema-di-Prenotazioni.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/Sistema-di-Prenotazioni-Repository.iml" filepath="$PROJECT_DIR$/.idea/Sistema-di-Prenotazioni-Repository.iml" />
     </modules>
   </component>

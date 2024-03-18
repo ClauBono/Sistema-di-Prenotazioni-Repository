@@ -1,5 +1,4 @@
 package StagistiLinks.Sistema.di.Prenotazioni.Entities;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import java.time.LocalDate;
@@ -14,25 +13,31 @@ public class PrenotazioniEntity {
 
     @Column
     @NotNull
-    private String nomeCliente;
-
-    @Column
-    @NotNull
-    @JsonFormat(pattern = "yyyy-MM-dd") // Formattazione per l'output JSON
-    private LocalDate dataPrenotazione;
-
-    @Column
-    @NotNull
     private String tipoServizio;
 
-    public PrenotazioniEntity(Long id, @NotNull String nomeCliente, @NotNull LocalDate dataPrenotazione, @NotNull String tipoServizio) {
-        this.id = id;
-        this.nomeCliente = nomeCliente;
-        this.dataPrenotazione = dataPrenotazione;
-        this.tipoServizio = tipoServizio;
-    }
+    @Column
+    @NotNull
+    private LocalDate dataPrenotazione;
+
+    @ManyToOne
+    @NotNull
+    @JoinColumn(name = "cliente_id")
+    private ClienteEntity cliente;
+
+    @ManyToOne
+    @NotNull
+    @JoinColumn(name = "stato_prenotazione_id")
+    private StatoPrenotazioneEntity statoPrenotazione;
 
     public PrenotazioniEntity() {
+    }
+
+    public PrenotazioniEntity(Long id, @NotNull LocalDate dataPrenotazione, @NotNull String tipoServizio, @NotNull StatoPrenotazioneEntity statoPrenotazione, @NotNull ClienteEntity cliente) {
+        this.id = id;
+        this.dataPrenotazione = dataPrenotazione;
+        this.tipoServizio = tipoServizio;
+        this.statoPrenotazione = statoPrenotazione;
+        this.cliente = cliente;
     }
 
     public Long getId() {
@@ -41,14 +46,6 @@ public class PrenotazioniEntity {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public @NotNull String getNomeCliente() {
-        return nomeCliente;
-    }
-
-    public void setNomeCliente(@NotNull String nomeCliente) {
-        this.nomeCliente = nomeCliente;
     }
 
     public @NotNull LocalDate getDataPrenotazione() {
@@ -63,17 +60,34 @@ public class PrenotazioniEntity {
         return tipoServizio;
     }
 
-    public void setTipoServizio(@NotNull String tipoServizio) {
+    public void setTipoServizio(String tipoServizio) {
         this.tipoServizio = tipoServizio;
+    }
+
+    public @NotNull StatoPrenotazioneEntity getStatoPrenotazione() {
+        return statoPrenotazione;
+    }
+
+    public void setStatoPrenotazione(@NotNull StatoPrenotazioneEntity statoPrenotazione) {
+        this.statoPrenotazione = statoPrenotazione;
+    }
+
+    public @NotNull ClienteEntity getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(@NotNull ClienteEntity cliente) {
+        this.cliente = cliente;
     }
 
     @Override
     public String toString() {
         return "PrenotazioniEntity{" +
                 "id=" + id +
-                ", nomeCliente='" + nomeCliente + '\'' +
                 ", dataPrenotazione=" + dataPrenotazione +
                 ", tipoServizio='" + tipoServizio + '\'' +
+                ", statoPrenotazione=" + statoPrenotazione +
+                ", cliente=" + cliente +
                 '}';
     }
 }

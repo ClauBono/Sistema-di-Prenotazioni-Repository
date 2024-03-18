@@ -25,7 +25,7 @@ public class PrenotazioniService {
 
     public boolean aggiungiPrenotazione(PrenotazioniEntity prenotazione) {
         try {
-            if (prenotazione != null) {
+            if (prenotazione != null && prenotazione.getDataPrenotazione() != null && prenotazione.getStatoPrenotazione() != null && prenotazione.getStatoPrenotazione() != null && prenotazione.getCliente() != null) {
 
                 prenotazioniRepository.save(prenotazione);
 
@@ -84,7 +84,6 @@ public class PrenotazioniService {
             if (prenotazioneTemp.isPresent()){
 
                 PrenotazioniEntity prenotazioneDaModificare = prenotazioneTemp.get();
-                prenotazioneDaModificare.setNomeCliente(prenotazioneModificata.getNomeCliente());
                 prenotazioneDaModificare.setDataPrenotazione(prenotazioneModificata.getDataPrenotazione());
                 prenotazioneDaModificare.setTipoServizio(prenotazioneModificata.getTipoServizio());
                 prenotazioniRepository.save(prenotazioneDaModificare);

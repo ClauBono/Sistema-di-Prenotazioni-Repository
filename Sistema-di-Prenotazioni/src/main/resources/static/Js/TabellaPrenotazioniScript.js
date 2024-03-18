@@ -11,9 +11,10 @@ $(document).ready(function () {
         },
         "columns": [
             {"data": "id"},
-            {"data": "nomeCliente"},
-            {"data": "dataPrenotazione"},
             {"data": "tipoServizio"},
+            {"data": "dataPrenotazione"},
+            {"data": "cliente.nome"},
+            {"data": "statoPrenotazione.stato"},
             {
                 "data": null,
                 "render": function (data, type, row) {
@@ -28,7 +29,8 @@ $(document).ready(function () {
             { targets: [1], orderData: [1, 0] },
             { targets: [2], orderData: [2, 0] },
             { targets: [3], orderData: [3, 0] },
-            { targets: [4], orderable: false },
+            { targets: [4], orderData: [4, 0] },
+            { targets: [5], orderable: false },
         ],
         "paging": true, // paginazione
         "info": true, // informazioni sulla pagina

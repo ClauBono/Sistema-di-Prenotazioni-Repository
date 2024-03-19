@@ -63,6 +63,8 @@ public class AllConverterToDtoAndEntityService {
         ClienteDTO dto = new ClienteDTO();
 
         dto.setId(clienteEntity.getId());
+        dto.setUsername(clienteEntity.getUsername());
+        dto.setPassword(clienteEntity.getPassword());
         dto.setNome(clienteEntity.getNome());
         dto.setCognome(clienteEntity.getCognome());
         dto.setRuolo(clienteEntity.getRuolo());
@@ -75,6 +77,8 @@ public class AllConverterToDtoAndEntityService {
         ClienteEntity clienteEntity = new ClienteEntity();
 
         clienteEntity.setId(clienteDTO.getId());
+        clienteEntity.setUsername(clienteDTO.getUsername());
+        clienteEntity.setPassword(clienteDTO.getPassword());
         clienteEntity.setNome(clienteDTO.getNome());
         clienteEntity.setCognome(clienteDTO.getCognome());
         clienteEntity.setRuolo(clienteDTO.getRuolo());

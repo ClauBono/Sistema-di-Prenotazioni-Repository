@@ -27,3 +27,23 @@ Frontend - Thymeleaf:
 Creare un frontend Thymeleaf per interagire con il backend del sistema di prenotazioni.
 Consentire agli utenti di visualizzare la lista delle prenotazioni con informazioni dettagliate.
 Implementare un meccanismo di prenotazione che consente agli utenti di effettuare nuove prenotazioni, modificare o cancellare quelle esistenti.
+
+
+
+
+@Bean
+    public UserDetailsService userDetailsService() {
+        return new UserDetailsService() {
+            @Override
+            public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+                ClienteEntity user = clienteRepository.findByUsername(username)
+                        .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + username));
+
+                return org.springframework.security.core.userdetails.User.builder()
+                        .username(user.getUsername())
+                        .password(user.getPassword())
+                        .roles(user.getRuolo())
+                        .build();
+            }
+        };
+    }

@@ -23,7 +23,7 @@ public class ClienteService {
     public boolean aggiungiCliente(ClienteEntity cliente) {
         try {
 
-            if (cliente != null && cliente.getNome() != null && cliente.getCognome() != null && cliente.getRuolo() != null) {
+            if (cliente != null && cliente.getUsername() != null && cliente.getPassword() != null && cliente.getNome() != null && cliente.getCognome() != null && cliente.getRuolo() != null) {
 
                 clienteRepository.save(cliente);
 

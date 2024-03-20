@@ -1,6 +1,8 @@
 package StagistiLinks.Sistema.di.Prenotazioni.ControllerWeb;
 import StagistiLinks.Sistema.di.Prenotazioni.Entities.PrenotazioniEntity;
 import StagistiLinks.Sistema.di.Prenotazioni.Repositories.PrenotazioniRepository;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,8 +19,12 @@ public class PagineWebController {
 
     @GetMapping("/home")
     public String home(Model model) {
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+
         model.addAttribute("titoloPagina", "Portale Prenotazioni");
-        model.addAttribute("titoloAlCentro", "Benvenuti da qui è possibile visualizzare le prenotazioni!");
+        model.addAttribute("titoloAlCentro", "Benvenuto " + username + ", da qui è possibile visualizzare le tue prenotazioni! ");
 
         //Per Footer
         model.addAttribute("annoCorrente", java.time.LocalDate.now().getYear());
@@ -31,12 +37,17 @@ public class PagineWebController {
 
     @GetMapping("/visualizzaTabellaPrenotazioni")
     public String visualizzaTabellaPrenotazioni(Model model) {
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+
         model.addAttribute("titoloPagina", "Tabella Prenotazioni");
+        model.addAttribute("titoloAggiungiPrenotazione", "Ciao " + username + ", da qui è possibile aggiungere una Prenotazione");
 
         //Per Footer
         model.addAttribute("annoCorrente", java.time.LocalDate.now().getYear());
         model.addAttribute("simboloFooter", "©");
-        model.addAttribute("scrittaFooter", "Prenotazioni");
+        model.addAttribute("scrittaFooter", "Gestione Prenotazioni");
         //Per Footer
 
         return "TabellaPrenotazioni";

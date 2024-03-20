@@ -15,10 +15,10 @@ public class PrenotazioniDTO {
     private String tipoServizio;
 
     @NotNull
-    private StatoPrenotazioneDTO statoPrenotazione;
+    private ClienteDTO cliente;
 
     @NotNull
-    private ClienteDTO cliente;
+    private StatoPrenotazioneDTO statoPrenotazione;
 
     public PrenotazioniDTO() {
     }

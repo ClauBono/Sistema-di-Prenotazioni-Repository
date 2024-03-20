@@ -5,6 +5,8 @@ import StagistiLinks.Sistema.di.Prenotazioni.Services.AllConverterToDtoAndEntity
 import StagistiLinks.Sistema.di.Prenotazioni.Services.PrenotazioniService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,7 +25,7 @@ public class PrenotazioniController {
 
     @GetMapping("/Visualizza tutte le Prenotazioni")
     public List<PrenotazioniDTO> ottieniTuttePrenotazioni(){
-        List<PrenotazioniEntity> tuttePrenotazioni = prenotazioniService.ottieniTuttePrenotazioni();
+        List<PrenotazioniEntity> tuttePrenotazioni = prenotazioniService.ottieniTuttePrenotazioniEntity();
         List<PrenotazioniDTO> tuttePrenotazioniDTO;
         tuttePrenotazioniDTO = tuttePrenotazioni.stream()
                 .map(allConverterToDtoAndEntityService::convertPrenotazioneToDTO)

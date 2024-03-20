@@ -19,7 +19,7 @@ public class PrenotazioniService {
         this.prenotazioniRepository = prenotazioniRepository;
     }
 
-    public List<PrenotazioniEntity> ottieniTuttePrenotazioni() {
+    public List<PrenotazioniEntity> ottieniTuttePrenotazioniEntity() {
         return prenotazioniRepository.findAll();
     }
 

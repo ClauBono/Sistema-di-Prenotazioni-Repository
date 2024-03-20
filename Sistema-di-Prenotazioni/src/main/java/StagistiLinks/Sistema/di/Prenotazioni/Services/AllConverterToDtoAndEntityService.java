@@ -48,6 +48,8 @@ public class AllConverterToDtoAndEntityService {
         prenotazioniEntity.setId(prenotazioniDTO.getId());
         prenotazioniEntity.setDataPrenotazione(prenotazioniDTO.getDataPrenotazione());
         prenotazioniEntity.setTipoServizio(prenotazioniDTO.getTipoServizio());
+        prenotazioniEntity.setCliente(convertClienteToEntity(prenotazioniDTO.getCliente()));
+        prenotazioniEntity.setStatoPrenotazione(convertStatoPrenotazioneToEntity(prenotazioniDTO.getStatoPrenotazione()));
 
         return prenotazioniEntity;
     }

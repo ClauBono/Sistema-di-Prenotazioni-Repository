@@ -1,6 +1,5 @@
 package StagistiLinks.Sistema.di.Prenotazioni.DTO;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import jakarta.validation.constraints.NotNull;
 import org.springframework.stereotype.Component;
 import java.time.LocalDate;
 
@@ -14,10 +13,9 @@ public class PrenotazioniDTO {
 
     private String tipoServizio;
 
-    @NotNull
+
     private ClienteDTO cliente;
 
-    @NotNull
     private StatoPrenotazioneDTO statoPrenotazione;
 
     public PrenotazioniDTO() {
@@ -55,19 +53,19 @@ public class PrenotazioniDTO {
         this.tipoServizio = tipoServizio;
     }
 
-    public @NotNull StatoPrenotazioneDTO getStatoPrenotazione() {
+    public StatoPrenotazioneDTO getStatoPrenotazione() {
         return statoPrenotazione;
     }
 
-    public void setStatoPrenotazione(@NotNull StatoPrenotazioneDTO statoPrenotazione) {
+    public void setStatoPrenotazione(StatoPrenotazioneDTO statoPrenotazione) {
         this.statoPrenotazione = statoPrenotazione;
     }
 
-    public @NotNull ClienteDTO getCliente() {
+    public ClienteDTO getCliente() {
         return cliente;
     }
 
-    public void setCliente(@NotNull ClienteDTO cliente) {
+    public void setCliente(ClienteDTO cliente) {
         this.cliente = cliente;
     }
 

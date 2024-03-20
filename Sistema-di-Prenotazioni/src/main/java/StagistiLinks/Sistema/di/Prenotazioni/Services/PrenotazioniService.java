@@ -19,6 +19,10 @@ public class PrenotazioniService {
         this.prenotazioniRepository = prenotazioniRepository;
     }
 
+    public List<PrenotazioniEntity> getPrenotazioniByCliente(Long clienteId) {
+        return prenotazioniRepository.findByClienteId(clienteId);
+    }
+
     public List<PrenotazioniEntity> ottieniTuttePrenotazioniEntity() {
         return prenotazioniRepository.findAll();
     }

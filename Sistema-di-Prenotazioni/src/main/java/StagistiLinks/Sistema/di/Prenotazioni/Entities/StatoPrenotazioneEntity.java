@@ -34,19 +34,19 @@ public class StatoPrenotazioneEntity {
         this.id = id;
     }
 
-    public @NotNull String getStato() {
+    public String getStato() {
         return stato;
     }
 
-    public void setStato(@NotNull String stato) {
+    public void setStato(String stato) {
         this.stato = stato;
     }
 
-    public @NotNull String getDescrizione() {
+    public String getDescrizione() {
         return descrizione;
     }
 
-    public void setDescrizione(@NotNull String descrizione) {
+    public void setDescrizione(String descrizione) {
         this.descrizione = descrizione;
     }
 

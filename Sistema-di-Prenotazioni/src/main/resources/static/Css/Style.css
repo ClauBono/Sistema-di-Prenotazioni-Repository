@@ -19,9 +19,9 @@ footer {
 /* Pagina TABELLA */
 
 /*Cambio del cursore sulle righe della tabella tranne l'ultima colonna */
-#tabellaPrenotazioni tbody tr td:not(:last-child):hover {
+/*#tabellaPrenotazioni tbody tr td:not(:last-child):hover {
     cursor: pointer;
-}
+}*/
 
 .aumentaSize{
     font-size: 40px;

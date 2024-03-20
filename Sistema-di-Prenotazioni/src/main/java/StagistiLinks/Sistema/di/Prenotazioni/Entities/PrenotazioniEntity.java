@@ -36,8 +36,8 @@ public class PrenotazioniEntity {
         this.id = id;
         this.dataPrenotazione = dataPrenotazione;
         this.tipoServizio = tipoServizio;
-        this.statoPrenotazione = statoPrenotazione;
         this.cliente = cliente;
+        this.statoPrenotazione = statoPrenotazione;
     }
 
     public Long getId() {

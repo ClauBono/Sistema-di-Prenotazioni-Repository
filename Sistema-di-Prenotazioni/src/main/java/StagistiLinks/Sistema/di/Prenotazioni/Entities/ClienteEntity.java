@@ -29,6 +29,7 @@ public class ClienteEntity {
     @NotNull
     private String ruolo;
 
+
     public ClienteEntity() {
     }
 
@@ -49,27 +50,27 @@ public class ClienteEntity {
         this.id = id;
     }
 
-    public @NotNull String getUsername() {
+    public String getUsername() {
         return username;
     }
 
-    public void setUsername(@NotNull String username) {
+    public void setUsername(String username) {
         this.username = username;
     }
 
-    public @NotNull String getPassword() {
+    public String getPassword() {
         return password;
     }
 
-    public void setPassword(@NotNull String password) {
+    public void setPassword(String password) {
         this.password = password;
     }
 
-    public @NotNull String getNome() {
+    public String getNome() {
         return nome;
     }
 
-    public void setNome(@NotNull String nome) {
+    public void setNome(String nome) {
         this.nome = nome;
     }
 
@@ -77,15 +78,15 @@ public class ClienteEntity {
         return cognome;
     }
 
-    public void setCognome(@NotNull String cognome) {
+    public void setCognome(String cognome) {
         this.cognome = cognome;
     }
 
-    public @NotNull String getRuolo() {
+    public String getRuolo() {
         return ruolo;
     }
 
-    public void setRuolo(@NotNull String ruolo) {
+    public void setRuolo(String ruolo) {
         this.ruolo = ruolo;
     }
 

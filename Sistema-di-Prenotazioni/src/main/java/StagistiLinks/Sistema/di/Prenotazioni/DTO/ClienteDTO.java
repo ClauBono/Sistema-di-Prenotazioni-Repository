@@ -11,6 +11,7 @@ public class ClienteDTO {
     private String cognome;
     private String ruolo;
 
+
     public ClienteDTO() {
     }
 
@@ -70,6 +71,7 @@ public class ClienteDTO {
     public void setRuolo(String ruolo) {
         this.ruolo = ruolo;
     }
+
 
     @Override
     public String toString() {

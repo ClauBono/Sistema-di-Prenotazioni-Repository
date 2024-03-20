@@ -1,15 +1,16 @@
 package StagistiLinks.Sistema.di.Prenotazioni.Config;
 import StagistiLinks.Sistema.di.Prenotazioni.Entities.ClienteEntity;
+import StagistiLinks.Sistema.di.Prenotazioni.Entities.PrenotazioniEntity;
 import StagistiLinks.Sistema.di.Prenotazioni.Repositories.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.*;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import java.util.List;
 
 
 @Configuration
@@ -23,7 +24,7 @@ public class SecurityConfig {
         this.clienteRepository = clienteRepository;
     }
 
-    private static final String[] SWAGGER_WHITELIST = {
+ private static final String[] SWAGGER_WHITELIST = {
             // -- Swagger UI v2
             "/v2/api-docs",
             "/swagger-resources",
@@ -38,6 +39,7 @@ public class SecurityConfig {
     };
 
 
+
     @Bean
     public UserDetailsService userDetailsService(PasswordEncoder passwordEncoder) {
         return new UserDetailsService() {
@@ -45,7 +47,6 @@ public class SecurityConfig {
             public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
                 ClienteEntity user = clienteRepository.findByUsername(username)
                         .orElseThrow(() -> new UsernameNotFoundException("User non trovato con questo username username: " + username));
-
 
                 return org.springframework.security.core.userdetails.User.builder()
                         .username(user.getUsername())
@@ -56,8 +57,8 @@ public class SecurityConfig {
     }
 
 
-    /*@Bean
-    SecurityFilterChain web(HttpSecurity http) throws Exception {
+/*@Bean
+SecurityFilterChain web(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests((authorize) -> authorize
                         .requestMatchers(SWAGGER_WHITELIST).permitAll()
@@ -67,6 +68,8 @@ public class SecurityConfig {
 
         return http.build();
     }*/
+
+
 
 
     @Bean

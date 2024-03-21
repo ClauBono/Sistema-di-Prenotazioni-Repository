@@ -1,5 +1,6 @@
 package StagistiLinks.Sistema.di.Prenotazioni.Services;
 import StagistiLinks.Sistema.di.Prenotazioni.Entities.PrenotazioniEntity;
+import StagistiLinks.Sistema.di.Prenotazioni.Entities.StatoPrenotazioneEntity;
 import StagistiLinks.Sistema.di.Prenotazioni.Repositories.PrenotazioniRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -30,6 +31,12 @@ public class PrenotazioniService {
     public boolean aggiungiPrenotazione(PrenotazioniEntity prenotazione) {
         try {
             if (prenotazione != null && prenotazione.getDataPrenotazione() != null && prenotazione.getStatoPrenotazione() != null && prenotazione.getStatoPrenotazione() != null && prenotazione.getCliente() != null) {
+
+                /*// Imposta lo stato della prenotazione su "In Attesa"
+                StatoPrenotazioneEntity statoInAttesa = new StatoPrenotazioneEntity();
+                statoInAttesa.setStato("In Attesa");
+                statoInAttesa.setDescrizione("La prenotazione è in attesa di conferma");
+                prenotazione.setStatoPrenotazione(statoInAttesa);*/
 
                 prenotazioniRepository.save(prenotazione);
 

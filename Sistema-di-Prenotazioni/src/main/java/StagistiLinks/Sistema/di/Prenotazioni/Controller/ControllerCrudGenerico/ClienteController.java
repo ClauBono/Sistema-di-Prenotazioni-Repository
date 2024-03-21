@@ -1,4 +1,4 @@
-package StagistiLinks.Sistema.di.Prenotazioni.Controller;
+package StagistiLinks.Sistema.di.Prenotazioni.Controller.ControllerCrudGenerico;
 import StagistiLinks.Sistema.di.Prenotazioni.DTO.ClienteDTO;
 import StagistiLinks.Sistema.di.Prenotazioni.Entities.ClienteEntity;
 import StagistiLinks.Sistema.di.Prenotazioni.Services.AllConverterToDtoAndEntityService;

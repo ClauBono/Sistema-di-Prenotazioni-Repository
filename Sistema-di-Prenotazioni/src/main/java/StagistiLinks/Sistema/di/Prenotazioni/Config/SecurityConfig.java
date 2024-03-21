@@ -1,16 +1,16 @@
 package StagistiLinks.Sistema.di.Prenotazioni.Config;
 import StagistiLinks.Sistema.di.Prenotazioni.Entities.ClienteEntity;
-import StagistiLinks.Sistema.di.Prenotazioni.Entities.PrenotazioniEntity;
 import StagistiLinks.Sistema.di.Prenotazioni.Repositories.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.*;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import java.util.List;
+import org.springframework.security.web.SecurityFilterChain;
 
 
 @Configuration
@@ -24,21 +24,6 @@ public class SecurityConfig {
         this.clienteRepository = clienteRepository;
     }
 
- private static final String[] SWAGGER_WHITELIST = {
-            // -- Swagger UI v2
-            "/v2/api-docs",
-            "/swagger-resources",
-            "/swagger-resources/**",
-            "/configuration/ui",
-            "/configuration/security",
-            "/swagger-ui.html",
-            "/webjars/**",
-            // -- Swagger UI v3 (OpenAPI)
-            "/v3/api-docs/**",
-            "/swagger-ui/**"
-    };
-
-
 
     @Bean
     public UserDetailsService userDetailsService(PasswordEncoder passwordEncoder) {
@@ -51,34 +36,41 @@ public class SecurityConfig {
                 return org.springframework.security.core.userdetails.User.builder()
                         .username(user.getUsername())
                         .password(passwordEncoder.encode(user.getPassword()))
+                        .roles("USER")
                         .build();
             }
         };
     }
-
-
-/*@Bean
-SecurityFilterChain web(HttpSecurity http) throws Exception {
-        http
-                .authorizeHttpRequests((authorize) -> authorize
-                        .requestMatchers(SWAGGER_WHITELIST).permitAll()
-                        .anyRequest().permitAll()
-                );
-        // ...
-
-        return http.build();
-    }*/
-
-
-
 
     @Bean
     public PasswordEncoder passwordEncoder() {
         return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
 
+
+    @Bean
+    public SecurityFilterChain securityFilterChain2(HttpSecurity httpSecurity) throws Exception {
+        httpSecurity
+                .csrf().disable()
+                .authorizeRequests()
+                .requestMatchers("/swagger-ui/**", "/v3/api-docs/**", "/swagger-ui.html/**").permitAll()
+                .requestMatchers("/stato-prenotazione-controller/**", "/prenotazioni-controller/**", "/cliente-controller/**", "/prenotazioni-per-utente/**").permitAll()
+                .requestMatchers("/Stato Prenotazioni/**", "/Prenotazioni/**", "/Clienti/**").permitAll()
+                .anyRequest().authenticated();
+
+        httpSecurity
+                .formLogin();
+                return httpSecurity.build();
+
+    }
+
+
 }
 
 
 
+
+
+/*
+        */
 

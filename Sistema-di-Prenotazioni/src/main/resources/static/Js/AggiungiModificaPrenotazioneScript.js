@@ -6,15 +6,13 @@ $(document).ready(function () {
         event.preventDefault();
 
         // Creo nuove variabili e ottengo i valori dei campi
-        let nomeClienteVal = $('#nomeCliente').val();
         let dataPrenotazioneVal = $('#dataPrenotazione').val();
         let tipoServizioVal = $('#tipoServizio').val();
 
         // Verifica se tutti i campi sono stati compilati
-        if (nomeClienteVal && dataPrenotazioneVal && tipoServizioVal) {
+        if (dataPrenotazioneVal && tipoServizioVal) {
 
             let formData = {
-                nomeCliente: nomeClienteVal,
                 dataPrenotazione: dataPrenotazioneVal,
                 tipoServizio: tipoServizioVal
             };

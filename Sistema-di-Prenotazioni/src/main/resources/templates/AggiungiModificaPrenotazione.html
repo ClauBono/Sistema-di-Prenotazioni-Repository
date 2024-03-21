@@ -59,22 +59,22 @@
     <div class="card-body">
 
       <!-- FORM DI INSERIMENTO E MODIFICA -->
-      <form th:action="@{${mode eq 'INSERIMENTO' ? '/Prenotazioni/Aggiungi una Prenotazione' : '/Prenotazioni/Modifica una Prenotazione/' + id}}" id="form">
+      <form th:action="@{${'/Prenotazioni/Aggiungi una Prenotazione'}}" id="form">
 
-        <h2 th:text="${mode eq 'INSERIMENTO' ? titoloAggiungiPrenotazione : titoloModificaPrenotazione}"></h2>
+        <h2 th:text="${titoloAggiungiPrenotazione}"></h2>
 
         <div class="form-row mb-3" >
           <div class="form-group col mt-4">
-            <label for="nomeCliente">Nome del Cliente :</label>
-            <input type="text" class="form-control" id="nomeCliente" name="nomeCliente" th:value="${mode eq 'MODIFICA' ? tabellaPrenotazioni.cliente : ''}"/>
-          </div>
-          <div class="form-group col mt-4">
             <label for="dataPrenotazione">Data della Prenotazione :</label>
-            <input type="date" placeholder="dd/MM/yyyy" class="form-control" id="dataPrenotazione" name="dataPrenotazione" th:value="${mode eq 'MODIFICA' ? tabellaPrenotazioni.dataPrenotazione : ''}"/>
+            <input type="date" class="form-control" id="dataPrenotazione" name="dataPrenotazione"/>
           </div>
           <div class="form-group col mt-4">
             <label for="tipoServizio">Tipo di Servizio Prenotato :</label>
-            <input type="text" class="form-control" id="tipoServizio" name="tipoServizio" th:value="${mode eq 'MODIFICA' ? tabellaPrenotazioni.tipoServizio : ''}"/>
+            <select class="form-control" id="tipoServizio" name="tipoServizio">
+              <option value="Opzione 1">Permesso uscita Anticipata</option>
+              <option value="Opzione 2">Permesso giorni Feriali</option>
+              <option value="Opzione 3">Permesso Trasferta</option>
+            </select>
           </div>
         </div>
 
@@ -82,7 +82,6 @@
         <div class="form-row">
           <div class="form-group col">
             <button type="submit" id="btnInserisci" class="btn btn-success mr-2" th:if="${mode eq 'INSERIMENTO'}">Inserisci</button>
-            <button type="submit" id="btnModifica" class="btn btn-success mr-2" th:if="${mode eq 'MODIFICA'}">Salva</button>
             <a th:href="@{/visualizzaTabellaPrenotazioni}" class="btn btn-secondary">Annulla</a>
           </div>
         </div>

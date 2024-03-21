@@ -1,14 +1,11 @@
 package StagistiLinks.Sistema.di.Prenotazioni.Controller.ControllerCrudGenerico;
 import StagistiLinks.Sistema.di.Prenotazioni.DTO.PrenotazioniDTO;
-import StagistiLinks.Sistema.di.Prenotazioni.Entities.ClienteEntity;
 import StagistiLinks.Sistema.di.Prenotazioni.Entities.PrenotazioniEntity;
 import StagistiLinks.Sistema.di.Prenotazioni.Repositories.ClienteRepository;
 import StagistiLinks.Sistema.di.Prenotazioni.Repositories.PrenotazioniRepository;
 import StagistiLinks.Sistema.di.Prenotazioni.Services.AllConverterToDtoAndEntityService;
-import StagistiLinks.Sistema.di.Prenotazioni.Services.PrenotazioniService;
+import StagistiLinks.Sistema.di.Prenotazioni.Services.ServicesCrudGenerico.PrenotazioniService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

@@ -30,15 +30,4 @@ $(document).ready(function () {
         "scrollY": '70%' // Imposta l'altezza dello scrolling
     });
 
-
-    // Evento click sulla cella delle colonne dalla prima alla quarta
-    $('#tabellaPrenotazioni tbody').on('click', 'td:nth-child(-n+4)', function () {
-
-        // Ottiene i dati della riga selezionata
-        let rowData = table.row($(this).closest('tr')).data();
-
-        window.location.href = '/ModificaPrenotazione/' + rowData.id;
-
-    });
-
 });

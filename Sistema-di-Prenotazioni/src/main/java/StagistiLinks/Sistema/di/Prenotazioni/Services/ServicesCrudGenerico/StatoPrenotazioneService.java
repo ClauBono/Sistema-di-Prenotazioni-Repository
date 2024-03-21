@@ -1,4 +1,4 @@
-package StagistiLinks.Sistema.di.Prenotazioni.Services;
+package StagistiLinks.Sistema.di.Prenotazioni.Services.ServicesCrudGenerico;
 import StagistiLinks.Sistema.di.Prenotazioni.Entities.StatoPrenotazioneEntity;
 import StagistiLinks.Sistema.di.Prenotazioni.Repositories.StatoPrenotazioneRepository;
 import lombok.extern.slf4j.Slf4j;

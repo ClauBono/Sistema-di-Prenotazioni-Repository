@@ -36,7 +36,6 @@ public class SecurityConfig {
                 return org.springframework.security.core.userdetails.User.builder()
                         .username(user.getUsername())
                         .password(passwordEncoder.encode(user.getPassword()))
-                        .roles("USER")
                         .build();
             }
         };

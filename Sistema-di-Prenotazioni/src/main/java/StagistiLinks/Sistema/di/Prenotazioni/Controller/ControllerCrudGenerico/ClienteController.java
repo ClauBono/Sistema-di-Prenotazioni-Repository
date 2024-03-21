@@ -2,7 +2,7 @@ package StagistiLinks.Sistema.di.Prenotazioni.Controller.ControllerCrudGenerico;
 import StagistiLinks.Sistema.di.Prenotazioni.DTO.ClienteDTO;
 import StagistiLinks.Sistema.di.Prenotazioni.Entities.ClienteEntity;
 import StagistiLinks.Sistema.di.Prenotazioni.Services.AllConverterToDtoAndEntityService;
-import StagistiLinks.Sistema.di.Prenotazioni.Services.ClienteService;
+import StagistiLinks.Sistema.di.Prenotazioni.Services.ServicesCrudGenerico.ClienteService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;

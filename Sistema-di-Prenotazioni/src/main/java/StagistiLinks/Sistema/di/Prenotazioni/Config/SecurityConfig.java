@@ -47,29 +47,43 @@ public class SecurityConfig {
     }
 
 
+
+    //Aggiunge api alle esclusioni, queste funzioneranno sempre, incluso swagger
     @Bean
     public SecurityFilterChain securityFilterChain2(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
                 .csrf().disable()
                 .authorizeRequests()
                 .requestMatchers("/swagger-ui/**", "/v3/api-docs/**", "/swagger-ui.html/**").permitAll()
-                .requestMatchers("/stato-prenotazione-controller/**", "/prenotazioni-controller/**", "/cliente-controller/**", "/prenotazioni-per-utente/**").permitAll()
+                .requestMatchers("/stato-prenotazione-controller/**", "/prenotazioni-controller/**", "/cliente-controller/**", "/prenotazioni-per-utente-controller/**", "/cliente-per-utente-controller/**").permitAll()
                 .requestMatchers("/Stato Prenotazioni/**", "/Prenotazioni/**", "/Clienti/**").permitAll()
+                .requestMatchers("/Le mie Prenotazioni/**", "/I miei Clienti/**").permitAll()
+                .requestMatchers("/Login", "/Registrazione").permitAll()
                 .anyRequest().authenticated();
 
         httpSecurity
-                .formLogin();
+                .formLogin()
+                .loginPage("/Login");
                 return httpSecurity.build();
 
     }
 
 
+    //Mi permette di tornare alla pagina scelta da me dopo il logout
+    @Primary
+    @Bean
+    protected HttpSecurity configure(HttpSecurity http) throws Exception {
+        http
+                // altre configurazioni...
+                .logout()
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/Login") // URL di reindirizzamento dopo il logout
+                .invalidateHttpSession(true)
+                .deleteCookies("JSESSIONID");
+
+        return http;
+    }
+
+
 }
-
-
-
-
-
-/*
-        */
 

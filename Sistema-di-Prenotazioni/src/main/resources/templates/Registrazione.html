@@ -32,73 +32,86 @@
   <link th:href="@{/static/Css/Style.css}" rel="stylesheet"/>
 
   <!-- Script del js -->
-  <script th:src="@{/static/js/TabellaPrenotazioniScript.js}"></script>
-  <script th:src="@{/static/js/AggiungiPrenotazioneScript.js}"></script>
+  <script th:src="@{/static/js/Registrazione.js}"></script>
 
 
 </head>
+
+
 <body>
 
 <!-- Header -->
 <header class="bg-dark py-4">
   <div class="container">
     <nav class="navbar navbar-expand-lg navbar-dark">
-      <a class="navbar-brand mx-auto display-1 aumentaSize" th:href="@{/home}">Torna alla Home</a>
-      <a class="navbar-brand mx-auto display-1 aumentaSize" th:href="@{/visualizzaTabellaPrenotazioni}">Torna alle Prenotazioni</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+      <h2 class="navbar-brand mx-auto aumentaSize" th:text="${titoloPaginaRegistrazione}"></h2>
     </nav>
   </div>
 </header>
-
 
 
 <section id="main-section" class="container mt-4">
   <div id="formDiv" class="card">
     <div class="card-body">
 
-      <!-- FORM DI INSERIMENTO PRENOTAZIONE-->
-      <form th:action="@{${'/Le mie Prenotazioni/Aggiungi prenotazione per utente'}}" id="form">
+      <!-- FORM Di Registrazione -->
+      <form th:action="@{${'/I miei Clienti/Registrazione utente'}}" id="formRegistrazione">
 
-        <h2 th:text="${titoloAggiungiPrenotazione}"></h2>
-
-        <div class="form-row mb-3" >
+        <div class="form-row mb-3">
           <div class="form-group col mt-4">
-            <label for="dataPrenotazione">Data della Prenotazione :</label>
-            <input type="date" class="form-control" id="dataPrenotazione" name="dataPrenotazione"/>
+            <label for="username">Username:</label>
+            <input type="text" class="form-control" id="username" name="username" required="required"/>
           </div>
+        </div>
+
+        <div class="form-row mb-3">
           <div class="form-group col mt-4">
-            <label for="tipoServizio">Tipo di Servizio Prenotato :</label>
-            <select class="form-control" id="tipoServizio" name="tipoServizio">
-              <option value="Permesso uscita Anticipata">Permesso uscita Anticipata</option>
-              <option value="Permesso giorni Feriali">Permesso giorni Feriali</option>
-              <option value="Permesso Trasferta">Permesso Trasferta</option>
+            <label for="password">Password:</label>
+            <input type="password" class="form-control" id="password" name="password" required="required"/>
+          </div>
+        </div>
+
+        <div class="form-row mb-3">
+          <div class="form-group col mt-4">
+            <label for="nome">Nome:</label>
+            <input type="text" class="form-control" id="nome" name="nome" required="required"/>
+          </div>
+        </div>
+
+        <div class="form-row mb-3">
+          <div class="form-group col mt-4">
+            <label for="cognome">Cognome:</label>
+            <input type="text" class="form-control" id="cognome" name="cognome" required="required"/>
+          </div>
+        </div>
+
+        <div class="form-row mb-3">
+          <div class="form-group col mt-4">
+            <label for="ruolo">Ruolo:</label>
+            <select class="form-control" id="ruolo" name="ruolo" required="required">
+              <option value="Backend Developer">Backend Developer</option>
+              <option value="Frontend Developer">Frontend Developer</option>
             </select>
           </div>
         </div>
 
-        <!-- Button -->
         <div class="form-row">
           <div class="form-group col">
-            <button type="submit" id="btnInserisci" class="btn btn-success mr-2">Inserisci</button>
-            <a th:href="@{/visualizzaTabellaPrenotazioni}" class="btn btn-secondary">Annulla</a>
+            <button type="submit" id="btnRegistrazione" class="btn btn-primary">Registrati</button>
           </div>
         </div>
       </form>
 
-
       <!-- Messaggi di successo corrispettivi per ogni form -->
 
-      <div id="inserimentoMessage" class="alert alert-success" style="display: none;">
-        Inserimento avvenuto con successo!
+      <div id="registrazioneMessage" class="alert alert-success" style="display: none;">
+        Registrazione avvenuta con successo!
       </div>
-
 
     </div>
   </div>
-
 </section>
+
 
 
 <!-- Footer -->

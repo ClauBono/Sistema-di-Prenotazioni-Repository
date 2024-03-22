@@ -8,6 +8,40 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class PagineWebController {
 
+
+    @GetMapping("/Login")
+    public String login(Model model) {
+
+
+        model.addAttribute("titoloPagina", "Pagina Login");
+        model.addAttribute("titoloPaginaLogin", "Pagina di Login");
+
+        //Per Footer
+        model.addAttribute("annoCorrente", java.time.LocalDate.now().getYear());
+        model.addAttribute("simboloFooter", "©");
+        model.addAttribute("scrittaFooter", "Gestione Prenotazioni");
+        //Per Footer
+
+        return "Login";
+    }
+
+    @GetMapping("/Registrazione")
+    public String registrazione(Model model) {
+
+
+        model.addAttribute("titoloPagina", "Pagina Registrazione");
+        model.addAttribute("titoloPaginaRegistrazione", "Pagina di Registrazione");
+
+        //Per Footer
+        model.addAttribute("annoCorrente", java.time.LocalDate.now().getYear());
+        model.addAttribute("simboloFooter", "©");
+        model.addAttribute("scrittaFooter", "Gestione Prenotazioni");
+        //Per Footer
+
+        return "Registrazione";
+    }
+
+
     @GetMapping("/home")
     public String home(Model model) {
 

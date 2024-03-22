@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html" lang="it">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <title th:title="${titoloPagina}"></title>
+
+    <!-- Script di jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    <!-- Collegamento a Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+
+
+    <!-- Collegamento all'insieme icone Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
+
+
+    <!-- Collegamenti ai fogli di stile DataTables -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css"/>
+
+
+    <!-- Collegamento a Bootstrap JS (opzionale se non si utilizzano componenti JavaScript di Bootstrap) -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+    <!-- Script DataTables per inizializzare la tabella con dati dinamici e scrolling -->
+    <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+
+
+<style>
+
+    footer {
+    position: fixed;
+    bottom: 0;
+
+    /*Servono per mettere al centro il footer, che è posizionato come absolute*/
+    left: 50%;
+    transform: translateX(-50%);
+    /*Servono per mettere al centro il footer, che è posizionato come absolute*/
+
+    width: 50%;
+    height: 10%; /* Altezza del footer */
+    }
+
+
+    #footer-section {
+    margin-top: 20%; /* Aggiungi spazio sopra il footer se necessario */
+    }
+
+    .aumentaSize{
+        font-size: 40px;
+    }
+
+</style>
+
+
+</head>
+
+
+<body>
+
+<!-- Header -->
+<header class="bg-dark py-4">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <h2 class="navbar-brand mx-auto aumentaSize" th:text="${titoloPaginaLogin}"></h2>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link mx-auto" th:href="@{/Registrazione}">Sei Nuovo? Registrati</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</header>
+
+
+<section id="main-section" class="container mt-4">
+    <div id="formDiv" class="card">
+        <div class="card-body">
+
+            <!-- FORM Di Login -->
+            <form th:action="@{/Login}" method="post" id="form">
+
+                <!-- Username e Password -->
+
+                <div class="form-row mb-3" >
+                    <div class="form-group col mt-4">
+                        <label for="username">Username:</label>
+                        <input type="text" class="form-control" id="username" name="username" required="required"/>
+                    </div>
+                    <div class="form-group col mt-4">
+                        <label for="password">Password:</label>
+                        <input type="password" class="form-control" id="password" name="password" required="required"/>
+                    </div>
+                </div>
+
+                <!-- Button -->
+                <div class="form-row">
+                    <div class="form-group col">
+                        <button type="submit" id="btnLogin" class="btn btn-success mr-2">Login</button>
+                    </div>
+                </div>
+            </form>
+
+
+
+        </div>
+    </div>
+
+</section>
+
+
+
+
+<!-- Footer -->
+<section class="mt-4">
+    <footer class="bg-dark py-4 text-light">
+        <div class="container text-center">
+            <p th:text="${simboloFooter} + ' ' + ${annoCorrente} + ' ' + ${scrittaFooter}"></p>
+        </div>
+    </footer>
+</section>
+
+</body>
+</html>
